@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia/{{name.0}}
+{% endblock %}
+
+{% block body %}
+    
+<form action="{% url 'edsave' %}" method='post'>
+    {% csrf_token %}
+    <div>
+    <input type="text" name="entry" value={{name.0}}>
+    <input type="submit" value="Save this info" style="background-color: rgb(0, 145, 255); color: white;">
+    </div>
+    <textarea name="content">{{name.1}}</textarea>
+    </form>  
+
+{% endblock %}

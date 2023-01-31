@@ -1,0 +1,17 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia/New Page
+{% endblock %}
+
+{% block body %}
+
+<form action="{% url 'save' %}" method='post'>
+    {% csrf_token %}
+    <div>
+    <input type="text" name="entry" placeholder="Put name here">
+    <input type="submit" value="Save this info" style="background-color: rgb(0, 145, 255); color: white;">
+    </div>
+    <textarea name="content"></textarea>
+    </form>  
+{% endblock %}
