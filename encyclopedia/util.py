@@ -21,10 +21,11 @@ def save_entry(title, content):
     """
     filename = f"entries/{title}.md"
     if default_storage.exists(filename):
-#        default_storage.delete(filename) - default string, changed for one below as per spec:
+        # default_storage.delete(filename) - default string, changed for one below as per spec:
         return False
     default_storage.save(filename, ContentFile(content))
-    return True # this line is added
+    return True  # this line is added
+
 
 def edit_entry(title, content):
     """
@@ -49,9 +50,10 @@ def get_entry(title):
     except FileNotFoundError:
         return None
 
+
 def conver(title):
-#    with open(title, 'r', encoding='utf-8') as inp:
-#        sp = inp.readlines()
+    # with open(title, 'r', encoding='utf-8') as inp:
+    #     sp = inp.readlines()
     full = get_entry(title)
     sp = full.splitlines(True)
     full = ''
@@ -71,7 +73,7 @@ def conver(title):
                 lix = line.index('(')
                 rix = line.index(')')
                 lnk2 = ']' + line[lix: rix + 1]
-                line = line.replace(lnk2, '</a>', 1)        
+                line = line.replace(lnk2, '</a>', 1)
         if line[0] in '-*+':
             line = '<li>' + line[1:-1] + '</li>'
             if sp[i - 1][0] not in '-*+':
